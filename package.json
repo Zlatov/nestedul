@@ -1,0 +1,16 @@
+{
+  "name": "nlist",
+  "version": "1.0.0",
+  "description": "some desc",
+  "main": "index.js",
+  "scripts": {
+    "test": "testnlist"
+  },
+  "keywords": [
+    "nested",
+    "ul",
+    "dropdown"
+  ],
+  "author": "Zlatov",
+  "license": "ISC"
+}
