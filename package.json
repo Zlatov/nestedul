@@ -1,18 +1,16 @@
 {
-  "name": "nlist",
+  "name": "@zlatov/nlist",
   "version": "1.0.0",
   "description": "some desc",
   "main": "dist/js/nlist.js",
-  "scripts": {
-    "test": "testnlist"
-  },
   "keywords": [
     "nested",
     "ul",
     "dropdown"
   ],
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "README.md"
   ],
   "author": "Zlatov",
   "license": "ISC"
