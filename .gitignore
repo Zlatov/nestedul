@@ -1,4 +1,4 @@
-dist/
+css/
+js/
 
-check/*
-!check/index.html
+test/node_modules/
