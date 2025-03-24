@@ -1,0 +1,85 @@
+.nlist {
+  margin: 0;
+  padding: 0;
+  // Принято решение, что отступ слева до первой вертикальной линии корневого узла 0.5em.
+  // Принято решение, что отступ слева от узла до вертикалльной линии дочерних узлов 0.4em.
+  // 0.5 - 0.4
+  padding-left: 0.1em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Узел li с вертикальной линией узла box-shadow.
+  li {
+    position: relative;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    // Хак для отображения вертикальной линии на расстоянии 0.4em правее предка. При этом общий отступ узла должен составлять 1.6em. 
+    // 1.6 = 0.4 + 1.2
+    margin-left: 0.4em;
+    padding-left: 1.2em;
+    // Граница не должна влиять на ширину узла, поэтому box-shadow. При box-sizing всёравно появляются артефакты.
+    box-shadow: inset 1px 0px DarkGray;
+
+    // Горизонтальня линия узла.
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: solid 1px DarkGray;
+      border-left: solid 1px DarkGray;
+      position: absolute;
+      // Общий отступ за вычитанием отступа слева и справа.
+      // 1.6 - 0.4 - 0.2
+      width: 1.0em;
+      height: 0.6em;
+      left: 0.0em;
+      top: 0.0em;
+    }
+
+    &:last-child {
+      box-shadow: none;
+    }
+  }
+
+  &.nlist-dropdown {
+    li:has(>ul) {
+      &>ul {
+        transition: height 250ms ease;
+        overflow: hidden;
+      }
+
+      // Кликкер через li::before
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0.7em;
+        height: 0.7em;
+        left: 0em;
+        top: 0.6em;
+        margin-left: -0.35em;
+        margin-top: -0.35em;
+        background-image: url("./../images/node.svg");
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        z-index: 2;
+        border: solid 1px DarkGray;
+      }
+
+      &.close {
+        &::before {
+          background-position: center bottom;
+        }
+
+        &>ul {
+          height: 0px;
+        }
+      }
+    }
+  }
+}
