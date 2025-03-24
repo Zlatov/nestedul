@@ -26,4 +26,6 @@ sass src/sass/nlist.scss:css/nlist.css -w
 # Разработка JS в test/index.html
 cd test
 yarn --cwd . add jquery
+cdnlist
+while inotifywait --event close_write src/js/nlist.js; do uglifyjs src/js/nlist.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.js; done
 ```
