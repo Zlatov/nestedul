@@ -9,52 +9,6 @@ function NList() {
 }
 
 NList.activate = function() {
-  console.log('> act')
-  // $(".ul_to_tree.ul_to_tree-dropdown").on("click", "li", function(event) {
-  //   event.stopPropagation()
-  //   if (event.offsetX >= -6 && event.offsetX <= 5 && event.offsetY >= 5 && event.offsetY <= 16 ) {
-  //     var li = $(this)
-  //     var elBlock = li.find(">ul")[0]
-  //     if (elBlock.style.height === "0px") {
-  //       elBlock.style.height = `${elBlock.scrollHeight}px`
-  //     } else {
-  //       elBlock.style.height = `${elBlock.scrollHeight}px`
-  //       window.getComputedStyle(elBlock, null).getPropertyValue("height")
-  //       elBlock.style.height = "0"
-  //     }
-  //     li.toggleClass("close")
-  //   }
-  // })
-
-  // $(".ul_to_tree.ul_to_tree-dropdown ul").on("transitionend", function(event) {
-  //   var elBlock = $(this)[0]
-  //   if (elBlock.style.height !== "0px") {
-  //     elBlock.style.height = "auto"
-  //   }
-  // })
-
-  // $(".ul_to_tree2.ul_to_tree2-dropdown").on("click", "li>i", function(event) {
-  //   event.stopPropagation()
-  //   var i = $(this)
-  //   var li = i.parent()
-  //   var elBlock = li.find(">ul")[0]
-  //   if (elBlock.style.height === "0px") {
-  //     elBlock.style.height = `${elBlock.scrollHeight}px`
-  //   } else {
-  //     elBlock.style.height = `${elBlock.scrollHeight}px`
-  //     window.getComputedStyle(elBlock, null).getPropertyValue("height")
-  //     elBlock.style.height = "0"
-  //   }
-  //   li.toggleClass("close")
-  // })
-
-  // $(".ul_to_tree2.ul_to_tree2-dropdown ul").on("transitionend", function(event) {
-  //   var elBlock = $(this)[0]
-  //   if (elBlock.style.height !== "0px") {
-  //     elBlock.style.height = "auto"
-  //   }
-  // })
-
   $("body").on("click", ".nlist-dropdown li>i", function(event) {
     event.stopPropagation()
     var i = $(this)
@@ -63,14 +17,39 @@ NList.activate = function() {
       return null
     }
     var li = $(this).parent()
-    // var elBlock = li.find(">ul")[0]
-    // if (elBlock.style.height === "0px") {
-    //   elBlock.style.height = `${elBlock.scrollHeight}px`
-    // } else {
-    //   elBlock.style.height = `${elBlock.scrollHeight}px`
-    //   window.getComputedStyle(elBlock, null).getPropertyValue("height")
-    //   elBlock.style.height = "0"
-    // }
+    var elBlock = li.find(">ul")[0]
+    if (elBlock.style.height === "0px") {
+      // console.log('> ul === "0px"')
+      elBlock.style.height = `${elBlock.scrollHeight}px`
+      // console.log(`> height = ${elBlock.scrollHeight}px`)
+
+      // if (elBlock.nlist_timeout_id) {
+      //   clearTimeout(elBlock.nlist_timeout_id)
+      // }
+      // elBlock.nlist_timeout_id = setTimeout(function() {
+      //   elBlock.style.height = "auto" 
+      //   // console.log('> height = auto')
+      // }, 250)
+    } else {
+      // console.log('> ul !== "0px"')
+      elBlock.style.height = `${elBlock.scrollHeight}px`
+      // console.log(`> height = ${elBlock.scrollHeight}px`)
+      window.getComputedStyle(elBlock, null).getPropertyValue("height")
+      // console.log('> getComputedStyle')
+      elBlock.style.height = "0"
+      // console.log('> height = "0"')
+
+      // if (elBlock.nlist_timeout_id) {
+      //   clearTimeout(elBlock.nlist_timeout_id)
+      // }
+    }
     li.toggleClass("close")
+  })
+
+  $("body .nlist-dropdown ul").on("transitionend", function(event) {
+    var elBlock = $(this)[0]
+    if (elBlock.style.height !== "0px") {
+      elBlock.style.height = "auto"
+    }
   })
 }
