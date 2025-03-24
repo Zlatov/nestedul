@@ -45,19 +45,8 @@
         left: 1.6em;
       }
 
-      &>ul {
-        transition: height 250ms ease;
-        overflow: hidden;
-      }
-
       &.close {
-        &>ul {
-          height: 0px;
-
-          li::after, div::before, i {
-            display: none;
-          }
-        }
+        // При скрытии потомков скрываем соединение с потомками
         &>div::before {
           display: none;
         }

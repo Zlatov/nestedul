@@ -77,10 +77,12 @@
       }
 
       &.close {
+        // Меняем кликкер
         &>i:first-of-type {
           background-position: center top;
         }
 
+        // Скрываем потомков
         &>ul {
           height: 0px;
         }
