@@ -39,31 +39,31 @@
       top: 0.0em;
     }
 
+    // Отмена вертикальной линии узла у последнего узла своего уровня.
     &:last-child {
       box-shadow: none;
     }
   }
 
   &.nlist-dropdown {
-    li:has(>ul) {
-      &>ul {
-        transition: height 250ms ease;
-        overflow: hidden;
-      }
+    // Все первые теги i скрываются, если далее нет ul, см. li:has(>ul).
+    li>i:first-of-type {
+      display: none;
+    }
 
-      // Кликкер через li::before
-      &::before {
-        content: "";
+    li:has(>ul) {
+      // Кликкер через тег i
+      &>i:first-of-type {
         display: block;
         position: absolute;
         width: 0.7em;
         height: 0.7em;
-        left: 0em;
+        left: 0.0em;
         top: 0.6em;
         margin-left: -0.35em;
         margin-top: -0.35em;
         background-image: url("./../images/node.svg");
-        background-position: center top;
+        background-position: center bottom;
         background-repeat: no-repeat;
         background-size: cover;
         cursor: pointer;
@@ -71,9 +71,14 @@
         border: solid 1px DarkGray;
       }
 
+      &>ul {
+        transition: height 250ms ease;
+        overflow: hidden;
+      }
+
       &.close {
-        &::before {
-          background-position: center bottom;
+        &>i:first-of-type {
+          background-position: center top;
         }
 
         &>ul {
