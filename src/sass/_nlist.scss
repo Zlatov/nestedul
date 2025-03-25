@@ -1,4 +1,5 @@
 .nlist {
+  line-height: 1.4em;
   margin: 0;
   padding: 0;
   // Принято решение, что отступ слева до первой вертикальной линии корневого узла 0.5em.
@@ -34,7 +35,7 @@
       // Общий отступ за вычитанием отступа слева и справа.
       // 1.6 - 0.4 - 0.2
       width: 1.0em;
-      height: 0.6em;
+      height: 0.7em;
       left: 0.0em;
       top: 0.0em;
     }
@@ -59,7 +60,7 @@
         width: 0.7em;
         height: 0.7em;
         left: 0.0em;
-        top: 0.6em;
+        top: 0.7em;
         margin-left: -0.35em;
         margin-top: -0.35em;
         background-image: url("./../images/node.svg");
