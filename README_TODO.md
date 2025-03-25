@@ -24,6 +24,7 @@ npm -f unpublish
 sass src/sass/nlist.scss:css/nlist.css -w
 
 # Разработка JS в test/index.html
+# https://esnext.github.io/es6-module-transpiler/editor
 cd test
 yarn --cwd . add jquery
 cdnlist

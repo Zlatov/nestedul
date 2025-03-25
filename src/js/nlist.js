@@ -1,6 +1,5 @@
 /*!
  * NList 1.0.0
- * https://nlist.zlatov.su
  * NList may be freely distributed under the ISC license.
  * 2025-03-22 17:08
  */
@@ -18,6 +17,10 @@ NList.activate = function() {
     }
     var li = $(this).parent()
     var elBlock = li.find(">ul")[0]
+    // Чиню раскрытие дочерних узлов со стартовой позиции с классом nlist-close.
+    if (li.hasClass("nlist-close") && elBlock.style.height == "") {
+      elBlock.style.height = "0"
+    }
     if (elBlock.style.height === "0px") {
       // console.log('> ul === "0px"')
       elBlock.style.height = `${elBlock.scrollHeight}px`
@@ -43,7 +46,7 @@ NList.activate = function() {
       //   clearTimeout(elBlock.nlist_timeout_id)
       // }
     }
-    li.toggleClass("close")
+    li.toggleClass("nlist-close")
   })
 
   $("body .nlist-dropdown ul").on("transitionend", function(event) {
