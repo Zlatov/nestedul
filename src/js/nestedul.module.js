@@ -1,14 +1,14 @@
 /*!
- * NList 1.0.0
- * NList may be freely distributed under the ISC license.
- * 2025-03-22 17:08
+ * NestedUl 1.0.0
+ * NestedUl may be freely distributed under the ISC license.
+ * 2025-03-25 16:45
  */
 
-function NList() {
+function NestedUl() {
 }
 
-NList.activate = function() {
-  $("body").on("click", ".nlist-dropdown li>i", function(event) {
+NestedUl.activate = function() {
+  $("body").on("click", ".nestedul-dropdown li>i", function(event) {
     event.stopPropagation()
     var i = $(this)
     // Проверяем, кликнули ли по первому тегу <i></i> или по какому-либо в тексте узла.
@@ -17,8 +17,8 @@ NList.activate = function() {
     }
     var li = $(this).parent()
     var elBlock = li.find(">ul")[0]
-    // Чиню раскрытие дочерних узлов со стартовой позиции с классом nlist-close.
-    if (li.hasClass("nlist-close") && elBlock.style.height == "") {
+    // Чиню раскрытие дочерних узлов со стартовой позиции с классом nestedul-close.
+    if (li.hasClass("nestedul-close") && elBlock.style.height == "") {
       elBlock.style.height = "0"
     }
     if (elBlock.style.height === "0px") {
@@ -26,10 +26,10 @@ NList.activate = function() {
       elBlock.style.height = `${elBlock.scrollHeight}px`
       // console.log(`> height = ${elBlock.scrollHeight}px`)
 
-      // if (elBlock.nlist_timeout_id) {
-      //   clearTimeout(elBlock.nlist_timeout_id)
+      // if (elBlock.nestedul_timeout_id) {
+      //   clearTimeout(elBlock.nestedul_timeout_id)
       // }
-      // elBlock.nlist_timeout_id = setTimeout(function() {
+      // elBlock.nestedul_timeout_id = setTimeout(function() {
       //   elBlock.style.height = "auto" 
       //   // console.log('> height = auto')
       // }, 250)
@@ -42,17 +42,19 @@ NList.activate = function() {
       elBlock.style.height = "0"
       // console.log('> height = "0"')
 
-      // if (elBlock.nlist_timeout_id) {
-      //   clearTimeout(elBlock.nlist_timeout_id)
+      // if (elBlock.nestedul_timeout_id) {
+      //   clearTimeout(elBlock.nestedul_timeout_id)
       // }
     }
-    li.toggleClass("nlist-close")
+    li.toggleClass("nestedul-close")
   })
 
-  $("body .nlist-dropdown ul").on("transitionend", function(event) {
+  $("body .nestedul-dropdown ul").on("transitionend", function(event) {
     var elBlock = $(this)[0]
     if (elBlock.style.height !== "0px") {
       elBlock.style.height = "auto"
     }
   })
 }
+
+export default NList

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test NList</title>
+  <title>Test NestedUl</title>
   <style type="text/css">
     html, body { margin: 0; padding: 0; }
     p { margin: 0.5em 0em; }
@@ -14,10 +14,17 @@
 /*    body { font-size: 0.8em; }*/
 /*    body { font-size: 2.0em; }*/
   </style>
-  <link rel="stylesheet" type="text/css" href="./../css/nlist.css">
-  <script type="text/javascript" src="./../src/js/nlist.js"></script>
+  <!-- CSSStyleSheet -->
+  <link rel="stylesheet" type="text/css" href="./../css/nestedul.css">
+  <!-- JS (If you need a drop down list) -->
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="./../js/nestedul.js"></script>
+  <!-- <script type="text/javascript" src="index.js"></script> -->
+  <script type="text/javascript" src="index.js">
+    $(document).ready(function() {
+      NestedUl.activate()
+    })
+  </script>
 </head>
 <body>
 
@@ -31,12 +38,12 @@
       </td>
       <td style="vertical-align: bottom;">
         <p>
-          Класс <code style="user-select: all;">nlist</code>
+          Класс <code style="user-select: all;">nestedul</code>
         </p>
       </td>
       <td style="vertical-align: bottom;">
         <p>
-          Класс <code style="user-select: all;">nlist nlist-dropdown</code>
+          Класс <code style="user-select: all;">nestedul nestedul-dropdown</code>
         </p>
         <p style="color: darkred;">
           Необходим тег <code>&lt;i&gt;</code> в начале каждого <code>&lt;li&gt;</code> узла.
@@ -70,7 +77,7 @@
         </ul>
       </td>
       <td>
-        <ul style="width: 65%;" class="nlist">
+        <ul style="width: 65%;" class="nestedul">
           <li>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
           <li>
             Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
@@ -95,7 +102,7 @@
         </ul>
       </td>
       <td>
-        <ul style="width: 65%;" class="nlist nlist-dropdown">
+        <ul style="width: 65%;" class="nestedul nestedul-dropdown">
           <li><i></i>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
           <li>
             <i></i>Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
@@ -122,8 +129,8 @@
     </tr>
     <tr>
       <td style="vertical-align: bottom;">Вложенный список с тегами <code>&lt;i&gt;&lt;/i&gt;&lt;div&gt;&lt;/div&gt;</code><br><code>ul > li > i+div+ul > li > i+div</code></td>
-      <td style="vertical-align: bottom;">Класс <code style="user-select: all;">nlist nlist-wide</code></td>
-      <td style="vertical-align: bottom;">Класс <code style="user-select: all;">nlist nlist-wide nlist-dropdown</code></td>
+      <td style="vertical-align: bottom;">Класс <code style="user-select: all;">nestedul nestedul-wide</code></td>
+      <td style="vertical-align: bottom;">Класс <code style="user-select: all;">nestedul nestedul-wide nestedul-dropdown</code></td>
     </tr>
     <tr>
       <td>
@@ -152,7 +159,7 @@
         </ul>
       </td>
       <td>
-        <ul style="width: 65%;" class="nlist nlist-wide">
+        <ul style="width: 65%;" class="nestedul nestedul-wide">
           <li><div>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</div></li>
           <li>
             <div>Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2</div>
@@ -178,7 +185,7 @@
       </td>
       <td>
         <button onclick="$('#wide_dropdown').find('li>div').text('asd')">Только asd</button>
-        <ul style="width: 65%;" class="nlist nlist-wide nlist-dropdown" id="wide_dropdown">
+        <ul style="width: 65%;" class="nestedul nestedul-wide nestedul-dropdown" id="wide_dropdown">
           <li><i></i><div>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</div></li>
           <li>
             <i></i><div>Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2</div><i></i>
@@ -186,11 +193,11 @@
               <li><i></i><div>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</div></li>
             </ul>
           </li>
-          <li class="nlist-close">
+          <li class="nestedul-close">
             <i></i><div>Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3</div>
             <ul>
               <li><i></i><div>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</div></li>
-              <li class="nlist-close">
+              <li class="nestedul-close">
                 <i></i><div>Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3</div>
                 <ul>
                   <li><i></i><div>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</div></li>

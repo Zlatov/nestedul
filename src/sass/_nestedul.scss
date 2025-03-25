@@ -1,4 +1,4 @@
-.nlist {
+.nestedul {
   line-height: 1.4em;
   margin: 0;
   padding: 0;
@@ -46,7 +46,7 @@
     }
   }
 
-  &.nlist-dropdown {
+  &.nestedul-dropdown {
     // Все первые теги i скрываются, если далее нет ul, см. li:has(>ul).
     li>i:first-of-type {
       display: none;
@@ -77,7 +77,7 @@
         overflow: hidden;
       }
 
-      &.nlist-close {
+      &.nestedul-close {
         // Меняем кликкер
         &>i:first-of-type {
           background-position: center top;

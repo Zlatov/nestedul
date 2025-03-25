@@ -1,4 +1,4 @@
-.nlist.nlist-wide {
+.nestedul.nestedul-wide {
   padding-left: 2.1em;
 
   ul {
@@ -33,14 +33,14 @@
     }
   }
 
-  &.nlist-dropdown {
+  &.nestedul-dropdown {
     li:has(>ul) {
       // Кликкер через тег i
       &>i:first-of-type {
         left: 1.6em;
       }
 
-      &.nlist-close {
+      &.nestedul-close {
         // Скрыть:
         // 1. Cоединение с потомками;
         &>div::before {

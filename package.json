@@ -1,16 +1,20 @@
 {
-  "name": "@zlatov/nlist",
+  "name": "nestedul",
   "version": "1.0.0",
-  "description": "some desc",
-  "main": "js/nlist.module.js",
+  "description": "Make multi-level nested UL lists as trees and add child element disclosure.",
+  "main": "js/nestedul.module.js",
   "type": "module",
   "keywords": [
     "nested",
     "ul",
+    "list",
+    "tree",
     "dropdown"
   ],
   "files": [
-    "dist/**/*",
+    "css/**/*",
+    "images/**/*",
+    "js/**/*",
     "README.md"
   ],
   "author": "Zlatov",

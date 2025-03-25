@@ -5,48 +5,52 @@ npm init
 rm -rf css &&\
 rm -rf js &&\
 mkdir -p js &&\
-uglifyjs src/js/nlist.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.js &&\
-uglifyjs src/js/nlist.js -m --comments '/^!|@(?:license|preserve)/' -o js/nlist.min.js &&\
-uglifyjs src/js/nlist.module.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.module.js &&\
-uglifyjs src/js/nlist.module.js -m --comments '/^!|@(?:license|preserve)/' -o js/nlist.module.min.js &&\
-sass src/sass/nlist.scss:css/nlist.css &&\
-sass src/sass/nlist.scss:css/nlist.min.css -s compressed
+uglifyjs src/js/nestedul.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nestedul.js &&\
+uglifyjs src/js/nestedul.js -m --comments '/^!|@(?:license|preserve)/' -o js/nestedul.min.js &&\
+uglifyjs src/js/nestedul.module.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nestedul.module.js &&\
+uglifyjs src/js/nestedul.module.js -m --comments '/^!|@(?:license|preserve)/' -o js/nestedul.module.min.js &&\
+sass src/sass/nestedul.scss:css/nestedul.css &&\
+sass src/sass/nestedul.scss:css/nestedul.min.css -s compressed
 
-# Публикация частного репозитория (@name/rep_name - теперь по умолчанию все приватные, платные.) но публично.
+# Публикация частного репозитория. @name/rep_name - теперь по умолчанию все
+# приватные (и платные). Опубликовать частный репозиторий с
+# параметром --access=public - но публично.
 npm publish --access=public
+npm publish
 
-# Тестирование - нет, проверка опубликованного пакета.
+# Тестирование - Нет! - проверка опубликованного пакета.
+mkdir -p check
 cd check
-yarn --cwd ./ add @zlatov/nlist
+yarn --cwd ./ add nestedul
 
 # Не понравился опубликованный пакет? - В течении 24 часов можно удалить.
 npm -f unpublish
 
 # Расзработка CSS в test/index.html
-sass src/sass/nlist.scss:css/nlist.css -w
+sass src/sass/nestedul.scss:css/nestedul.css -w
 
 # Разработка JS в test/index.html
 # https://esnext.github.io/es6-module-transpiler/editor
 cd test
 yarn --cwd . add jquery
-cdnlist
-while inotifywait --event close_write src/js/nlist.js; do uglifyjs src/js/nlist.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.js; done
+cdnestedul
+while inotifywait --event close_write src/js/nestedul.js; do uglifyjs src/js/nestedul.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nestedul.js; done
 
 # Добавление в rails 7
-yarn add file:/home/iadfeshchm/projects/my/nlist
-cp -r node_modules/@zlatov vendor/javascript
-@import "@zlatov/nlist/css/nlist.css";
-pin "@zlatov/nlist", to: "@zlatov/nlist/js/nlist.module.js"
-import NList from "@zlatov/nlist"
+yarn add file:/home/iadfeshchm/projects/my/nestedul
+cp -r node_modules/nestedul vendor/javascript
+@import "nestedul/css/nestedul.css";
+pin "nestedul", to: "nestedul/js/nestedul.module.js"
+import NestedUl from "nestedul"
 $(document).on('turbo:load', function() {
-  NList.activate()
+  NestedUl.activate()
 })
 
 # Добавление в rails 6
-yarn add file:/home/iadfeshchm/projects/my/nlist
-@import "@zlatov/nlist/css/nlist.css";
-import NList from "@zlatov/nlist"
+yarn add file:/home/iadfeshchm/projects/my/nestedul
+@import "nestedul/css/nestedul.css";
+import NestedUl from "nestedul"
 $(document).on("turbolinks:load", function() {
-  NList.activate()
+  NestedUl.activate()
 })
 ```
