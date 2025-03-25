@@ -7,6 +7,8 @@ rm -rf js &&\
 mkdir -p js &&\
 uglifyjs src/js/nlist.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.js &&\
 uglifyjs src/js/nlist.js -m --comments '/^!|@(?:license|preserve)/' -o js/nlist.min.js &&\
+uglifyjs src/js/nlist.module.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.module.js &&\
+uglifyjs src/js/nlist.module.js -m --comments '/^!|@(?:license|preserve)/' -o js/nlist.module.min.js &&\
 sass src/sass/nlist.scss:css/nlist.css &&\
 sass src/sass/nlist.scss:css/nlist.min.css -s compressed
 
@@ -29,4 +31,22 @@ cd test
 yarn --cwd . add jquery
 cdnlist
 while inotifywait --event close_write src/js/nlist.js; do uglifyjs src/js/nlist.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nlist.js; done
+
+# Добавление в rails 7
+yarn add file:/home/iadfeshchm/projects/my/nlist
+cp -r node_modules/@zlatov vendor/javascript
+@import "@zlatov/nlist/css/nlist.css";
+pin "@zlatov/nlist", to: "@zlatov/nlist/js/nlist.module.js"
+import NList from "@zlatov/nlist"
+$(document).on('turbo:load', function() {
+  NList.activate()
+})
+
+# Добавление в rails 6
+yarn add file:/home/iadfeshchm/projects/my/nlist
+@import "@zlatov/nlist/css/nlist.css";
+import NList from "@zlatov/nlist"
+$(document).on("turbolinks:load", function() {
+  NList.activate()
+})
 ```

@@ -2,7 +2,8 @@
   "name": "@zlatov/nlist",
   "version": "1.0.0",
   "description": "some desc",
-  "main": "dist/js/nlist.js",
+  "main": "js/nlist.module.js",
+  "type": "module",
   "keywords": [
     "nested",
     "ul",
