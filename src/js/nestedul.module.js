@@ -1,7 +1,7 @@
 /*!
- * NestedUl 1.0.0
+ * NestedUl 1.0.2
  * NestedUl may be freely distributed under the ISC license.
- * 2025-03-25 16:45
+ * 2025-03-30 15:07
  */
 
 function NestedUl() {
@@ -57,4 +57,4 @@ NestedUl.activate = function() {
   })
 }
 
-export default NList
+export default NestedUl

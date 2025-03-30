@@ -19,11 +19,16 @@
   <!-- JS (If you need a drop down list) -->
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="./../js/nestedul.js"></script>
-  <!-- <script type="text/javascript" src="index.js"></script> -->
-  <script type="text/javascript" src="index.js">
+  <script type="text/javascript">
+    "use strict"
+
     $(document).ready(function() {
       NestedUl.activate()
     })
+    // https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/
+    // document.addEventListener("DOMContentLoaded", function(event) { 
+    //   NestedUl.activate()
+    // })
   </script>
 </head>
 <body>
