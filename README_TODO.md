@@ -1,3 +1,9 @@
+* Стили перевернуть в другой интерфейс классов:
+  ```html
+  <ul class="nestedul nestedul-narrow">...</ul> - неполное отображение соединяющих линий;
+  <ul class="nestedul nestedul-static"></ul> - отключить интерактивность/отображение иконок.
+  ```
+
 ```sh
 nvm use
 node -v

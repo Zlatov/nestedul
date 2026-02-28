@@ -4,56 +4,124 @@
  * 2026-02-28 10:38
  */
 
-export const version = "2.0.0"
+export const version = "2.0.0";
 
-function click_handle(event) {
-  event.stopPropagation()
-  var i = $(this)
-  // Проверяем, кликнули ли по первому тегу <i></i> или по какому-либо в тексте узла.
-  if (i.index() != 0) {
-    return null
-  }
+let controller = null;
 
-  var li = $(this).parent()
-  var elBlock = li.find(">ul")[0]
+/**
+ * Открыть ветку с анимацией height
+ */
+function expand(ul) {
+  ul.style.height = "0px";
+  const target = ul.scrollHeight;
+  ul.style.height = `${target}px`;
+}
 
-  // Чиню раскрытие дочерних узлов со стартовой позиции с классом nestedul-close.
-  if (li.hasClass("nestedul-close") && elBlock.style.height == "") {
-    elBlock.style.height = "0"
-  }
+/**
+ * Закрыть ветку с анимацией height
+ */
+function collapse(ul) {
+  const current = ul.scrollHeight;
+  ul.style.height = `${current}px`;
 
-  if (elBlock.style.height === "0px") {
-    elBlock.style.height = `${elBlock.scrollHeight}px`
+  // форсим reflow, чтобы браузер применил текущую высоту
+  ul.offsetHeight;
+
+  ul.style.height = "0px";
+}
+
+/**
+ * Обработчик клика по иконке
+ */
+function onClick(event) {
+  const icon = event.target.closest(".nestedul li > i");
+  if (!icon) return;
+
+  const li = icon.parentElement;
+  const child = li.querySelector(":scope > ul");
+  if (!child) return;
+
+  event.stopPropagation();
+
+  const isClosed = li.classList.contains("nestedul-close");
+
+  if (isClosed) {
+    expand(child);
   } else {
-    elBlock.style.height = `${elBlock.scrollHeight}px`
-    window.getComputedStyle(elBlock, null).getPropertyValue("height")
-    elBlock.style.height = "0"
+    collapse(child);
   }
 
-  li.toggleClass("nestedul-close")
+  li.classList.toggle("nestedul-close");
 }
 
-function transitionend_handle(event) {
-  const elBlock = event.target
-  if (elBlock.style.height !== "0px") {
-    elBlock.style.height = "auto"
+/**
+ * После окончания анимации открытой ветке возвращаем auto,
+ * чтобы высота адаптировалась к контенту.
+ */
+function onTransitionEnd(event) {
+  const ul = event.target;
+  if (ul.style.height !== "0px") {
+    ul.style.height = "auto";
   }
 }
 
+function prepareList(ul) {
+  const isStatic = ul.classList.contains("nestedul-static");
+  if (isStatic) return;
+
+  const isWide = ul.classList.contains("nestedul-wide");
+  const noIcons = ul.classList.contains("nestedul-no-icons");
+
+  ul.querySelectorAll("li").forEach(li => {
+    const childUl = li.querySelector(":scope > ul");
+    console.log('childUl: ', childUl)
+    // if (!childUl) return;
+
+    // --- добавить иконку ---
+    // if (!noIcons && !li.querySelector(":scope > i")) {
+    if (!noIcons) {
+      const icon = document.createElement("i");
+      li.insertBefore(icon, li.firstChild);
+    }
+
+    // --- wide режим ---
+    if (isWide && !li.querySelector(":scope > div")) {
+      const wrapper = document.createElement("div");
+
+      // переносим текстовые узлы и inline элементы
+      const nodes = Array.from(li.childNodes);
+      nodes.forEach(node => {
+        if (node === childUl) return;
+        if (node.nodeName === "I") return;
+        wrapper.appendChild(node);
+      });
+
+      li.insertBefore(wrapper, childUl);
+    }
+  });
+}
+
+/**
+ * Идемпотентная активация
+ */
 export function activate(root = document) {
-  root.querySelectorAll("ul.nestedul-dropdown").forEach(function(ul, _i, _a) {
-    ul.addEventListener("click", function(event) {
-      if (event.target.matches("li > i")) {
-        click_handle.call(event.target, event)
-      }
-    })
-  })
-  root.querySelectorAll("ul.nestedul-dropdown ul").forEach(function(ul, _i, _a) {
-    ul.addEventListener("transitionend", transitionend_handle)
-  })
+  controller?.abort();
+  controller = new AbortController();
+
+  root.querySelectorAll("ul.nestedul").forEach(prepareList);
+
+  root.addEventListener("click", onClick, {
+    signal: controller.signal
+  });
+
+  root.addEventListener("transitionend", onTransitionEnd, {
+    signal: controller.signal
+  });
 }
 
 export function destroy() {
+  controller?.abort();
+  controller = null;
 }
 
-export default { version, activate, destroy }
+export default { version, activate, destroy };
