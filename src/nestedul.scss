@@ -1,2 +1,3 @@
-@use "_nestedul.scss";
-@use "_wide.scss";
+@forward "_variables";
+@forward "_nestedul";
+@forward "_wide";

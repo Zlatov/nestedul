@@ -18,7 +18,8 @@
       "import": "./dist/nestedul.esm.js",
       "require": "./dist/nestedul.cjs.js"
     },
-    "./style.css": "./dist/nestedul.css"
+    "./scss": "./dist/nestedul.scss",
+    "./style": "./dist/nestedul.css"
   },
   "files": [
     "dist",
@@ -27,8 +28,9 @@
   "scripts": {
     "build:js": "node build.js",
     "build:css": "sass src/nestedul.scss dist/nestedul.css && sass src/nestedul.scss dist/nestedul.min.css --style=compressed",
+    "build:scss": "cpy \"src/**/*.scss\" dist",
     "build:assets": "cpy \"src/assets/**/*\" dist/assets",
-    "build": "npm run build:js && npm run build:css && npm run build:assets"
+    "build": "npm run build:js && npm run build:css  && npm run build:scss && npm run build:assets"
   },
   "devDependencies": {
     "cpy-cli": "^7.0.0",
