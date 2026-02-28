@@ -3,13 +3,8 @@ nvm use
 node -v
 
 yarn add -D sass esbuild
-
-
-
-
-
-
-
+yarn add -D jquery
+yarn build
 
 # Публикация частного репозитория. @name/rep_name - теперь по умолчанию все
 # приватные (и платные). Опубликовать частный репозиторий с

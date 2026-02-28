@@ -3,32 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test NestedUl</title>
+  <title>Demo NestedUl</title>
   <style type="text/css">
+
     html, body { margin: 0; padding: 0; }
     p { margin: 0.5em 0em; }
     table { background-color: Azure; }
     table td { vertical-align: top; background-color: white; }
     code { color: FireBrick; background-color: FloralWhite; padding: .1em; }
     body { font-size: 0.675em; font-family: sans-serif; line-height: 1.25em; }
-/*    body { font-size: 0.8em; }*/
-/*    body { font-size: 2.0em; }*/
+    /*body { font-size: 0.8em; }*/
+    /*body { font-size: 2.0em; }*/
+
   </style>
-  <!-- CSSStyleSheet -->
-  <link rel="stylesheet" type="text/css" href="./../css/nestedul.css">
-  <!-- JS (If you need a drop down list) -->
-  <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="./../js/nestedul.js"></script>
+  <link rel="stylesheet" type="text/css" href="../dist/nestedul.css">
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../dist/nestedul.iife.js"></script>
   <script type="text/javascript">
-    "use strict"
 
     $(document).ready(function() {
       NestedUl.activate()
     })
-    // https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/
-    // document.addEventListener("DOMContentLoaded", function(event) { 
-    //   NestedUl.activate()
-    // })
+
   </script>
 </head>
 <body>
@@ -43,12 +39,12 @@
       </td>
       <td style="vertical-align: bottom;">
         <p>
-          Класс <code style="user-select: all;">nestedul</code>
+          Класс <code>nestedul</code>
         </p>
       </td>
       <td style="vertical-align: bottom;">
         <p>
-          Класс <code style="user-select: all;">nestedul nestedul-dropdown</code>
+          Класс <code>nestedul nestedul-dropdown</code>
         </p>
         <p style="color: darkred;">
           Необходим тег <code>&lt;i&gt;</code> в начале каждого <code>&lt;li&gt;</code> узла.
@@ -134,8 +130,8 @@
     </tr>
     <tr>
       <td style="vertical-align: bottom;">Вложенный список с тегами <code>&lt;i&gt;&lt;/i&gt;&lt;div&gt;&lt;/div&gt;</code><br><code>ul > li > i+div+ul > li > i+div</code></td>
-      <td style="vertical-align: bottom;">Класс <code style="user-select: all;">nestedul nestedul-wide</code></td>
-      <td style="vertical-align: bottom;">Класс <code style="user-select: all;">nestedul nestedul-wide nestedul-dropdown</code></td>
+      <td style="vertical-align: bottom;">Класс <code>nestedul nestedul-wide</code></td>
+      <td style="vertical-align: bottom;">Класс <code>nestedul nestedul-wide nestedul-dropdown</code></td>
     </tr>
     <tr>
       <td>

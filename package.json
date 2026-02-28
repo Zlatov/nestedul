@@ -2,7 +2,6 @@
   "name": "nestedul",
   "version": "2.0.0",
   "type": "module",
-
   "description": "Make multi-level nested UL lists as trees and add child element disclosure.",
   "keywords": [
     "nested",
@@ -11,11 +10,9 @@
     "tree",
     "dropdown"
   ],
-
   "main": "dist/nestedul.cjs.js",
   "module": "dist/nestedul.esm.js",
   "browser": "dist/nestedul.iife.js",
-
   "exports": {
     ".": {
       "import": "./dist/nestedul.esm.js",
@@ -23,23 +20,22 @@
     },
     "./style.css": "./dist/nestedul.css"
   },
-
   "files": [
     "dist",
     "README.md"
   ],
-
   "scripts": {
     "build:js": "node build.js",
     "build:css": "sass src/nestedul.scss dist/nestedul.css && sass src/nestedul.scss dist/nestedul.min.css --style=compressed",
-    "build": "npm run build:js && npm run build:css"
+    "build:assets": "cpy \"src/assets/**/*\" dist/assets",
+    "build": "npm run build:js && npm run build:css && npm run build:assets"
   },
-
   "devDependencies": {
+    "cpy-cli": "^7.0.0",
     "esbuild": "^0.27.3",
+    "jquery": "^4.0.0",
     "sass": "^1.97.3"
   },
-
   "author": "Zlatov",
   "license": "ISC"
 }
