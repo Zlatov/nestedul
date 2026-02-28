@@ -3,8 +3,26 @@
   <ul class="nestedul nestedul-narrow">...</ul> - неполное отображение соединяющих линий;
   <ul class="nestedul nestedul-static"></ul> - отключить интерактивность/отображение иконок.
   ```
+* Переменные SASS;
+* Докуметация;
+* Публикация;
+* nestedul.zlatov.su.
+
+
+## Часто используемые команды при разработке
+
+```bash
+yarn
+yarn build
+# Ctrl + Alt + C (в файле demo/index.html)
+# F5
+```
+
+
+## Как создавалось
 
 ```sh
+touch .nvmrc # 24.11.0
 nvm use
 node -v
 
