@@ -1,16 +1,15 @@
 ```sh
-npm init
+nvm use
+node -v
 
-# Пересоздаём dist из src
-rm -rf css &&\
-rm -rf js &&\
-mkdir -p js &&\
-uglifyjs src/js/nestedul.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nestedul.js &&\
-uglifyjs src/js/nestedul.js -m --comments '/^!|@(?:license|preserve)/' -o js/nestedul.min.js &&\
-uglifyjs src/js/nestedul.module.js --comments '/^!|@(?:license|preserve)/' -b indent_level=2 -o js/nestedul.module.js &&\
-uglifyjs src/js/nestedul.module.js -m --comments '/^!|@(?:license|preserve)/' -o js/nestedul.module.min.js &&\
-sass src/sass/nestedul.scss:css/nestedul.css &&\
-sass src/sass/nestedul.scss:css/nestedul.min.css -s compressed
+yarn add -D sass esbuild
+
+
+
+
+
+
+
 
 # Публикация частного репозитория. @name/rep_name - теперь по умолчанию все
 # приватные (и платные). Опубликовать частный репозиторий с

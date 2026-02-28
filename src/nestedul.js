@@ -1,9 +1,3 @@
-/*!
- * NestedUl 1.0.2
- * NestedUl may be freely distributed under the ISC license.
- * 2025-03-30 15:07
- */
-
 function NestedUl() {
 }
 
