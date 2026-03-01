@@ -4,14 +4,13 @@
   line-height: 1.4em;
   margin: 0;
   padding: 0;
-  // Принято решение, что отступ слева до первой вертикальной линии корневого узла 0.5em.
-  // Принято решение, что отступ слева от узла до вертикалльной линии дочерних узлов 0.4em.
-  // 0.5 - 0.4
-  padding-left: $nestedul-indent;
+  padding-left: 2.1em;
 
   ul {
     margin: 0;
     padding: 0;
+    margin-left: -1.6em;
+    padding-left: 1.6em;
   }
 
   // Узел li с вертикальной линией узла box-shadow.
@@ -20,10 +19,8 @@
     list-style: none outside none;
     margin: 0;
     padding: 0;
-    // Хак для отображения вертикальной линии на расстоянии 0.4em правее предка. При этом общий отступ узла должен составлять 1.6em. 
-    // 1.6 = 0.4 + 1.2
-    margin-left: 0.4em;
-    padding-left: 1.2em;
+    padding-left: 3.2em;
+    margin-left: -1.6em;
     // Граница не должна влиять на ширину узла, поэтому box-shadow. При box-sizing всёравно появляются артефакты.
     box-shadow: inset 1px 0px DarkGray;
 
@@ -34,9 +31,7 @@
       border-bottom: solid 1px DarkGray;
       border-left: solid 1px DarkGray;
       position: absolute;
-      // Общий отступ за вычитанием отступа слева и справа.
-      // 1.6 - 0.4 - 0.2
-      width: 1.0em;
+      width: 3.0em;
       height: 0.7em;
       left: 0.0em;
       top: 0.0em;
@@ -46,9 +41,27 @@
     &:last-child {
       box-shadow: none;
     }
+
+    // Добавляется вертикальная линия контента (от узла до потомков).
+    &:has(>ul) {
+      &>div {
+        position: relative;
+
+        &::before {
+          content: "";
+          display: block;
+          border-left: solid 1px DarkGray;
+          position: absolute;
+          width: 0px;
+          height: 100%;
+          left: -1.6em;
+          top: 0.7em;
+        }
+      }
+    }
   }
 
-  &.nestedul-dropdown {
+  &:not(.nestedul-static) {
     // Все первые теги i скрываются, если далее нет ul, см. li:has(>ul).
     li>i:first-of-type {
       display: none;
@@ -61,7 +74,7 @@
         position: absolute;
         width: 0.7em;
         height: 0.7em;
-        left: 0.0em;
+        left: 1.6em;
         top: 0.7em;
         margin-left: -0.35em;
         margin-top: -0.35em;
@@ -84,10 +97,30 @@
         &>i:first-of-type {
           background-position: center top;
         }
-
         // Скрываем потомков
         &>ul {
           height: 0px;
+        }
+        // Скрыть:
+        // 1. Cоединение с потомками;
+        &>div::before {
+          display: none;
+        }
+        // 2. Вертикальные линии дочерних узлов;
+        & li::after {
+          display: none;
+        }
+        // 3. Горизонтальные линии дочерних узлов;
+        & li {
+          box-shadow: none;
+        }
+        // 4. Соединительные линии дочерних узлов с поддочерними.
+        & li>div::before {
+          display: none;
+        }
+        // 5. Кликкеры дочерних узлов.
+        & li>i:first-of-type {
+          display: none;
         }
       }
     }

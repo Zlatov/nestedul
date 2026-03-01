@@ -1,9 +1,10 @@
 * Стили перевернуть в другой интерфейс классов:
   ```html
   <ul class="nestedul nestedul-narrow">...</ul> - неполное отображение соединяющих линий;
-  <ul class="nestedul nestedul-static"></ul> - отключить интерактивность/отображение иконок.
+  <ul class="nestedul nestedul-static">...</ul> - отключить интерактивность/отображение иконок.
   ```
 * Переменные SASS;
+* Тест в rails;
 * Докуметация;
 * Публикация;
 * nestedul.zlatov.su.

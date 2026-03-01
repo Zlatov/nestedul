@@ -65,38 +65,35 @@ function onTransitionEnd(event) {
   }
 }
 
+// * Оборачивает контент в <div></div>;
+// * Добавляет <i></i> в начало.
 function prepareList(ul) {
+  const isNarrow = ul.classList.contains("nestedul-narrow");
   const isStatic = ul.classList.contains("nestedul-static");
-  if (isStatic) return;
-
-  const isWide = ul.classList.contains("nestedul-wide");
-  const noIcons = ul.classList.contains("nestedul-no-icons");
 
   ul.querySelectorAll("li").forEach(li => {
+    // Дочерний ul текущего li
     const childUl = li.querySelector(":scope > ul");
-    console.log('childUl: ', childUl)
-    // if (!childUl) return;
 
-    // --- добавить иконку ---
-    // if (!noIcons && !li.querySelector(":scope > i")) {
-    if (!noIcons) {
-      const icon = document.createElement("i");
-      li.insertBefore(icon, li.firstChild);
-    }
-
-    // --- wide режим ---
-    if (isWide && !li.querySelector(":scope > div")) {
+    // Обернуть в <div></div>
+    if (!isNarrow) {
       const wrapper = document.createElement("div");
 
-      // переносим текстовые узлы и inline элементы
+      // Переносим содержимое узла в <div></div> кроме <i></i> и <ul></ul>
       const nodes = Array.from(li.childNodes);
       nodes.forEach(node => {
         if (node === childUl) return;
-        if (node.nodeName === "I") return;
+        // if (node.nodeName === "I") return;
         wrapper.appendChild(node);
       });
 
       li.insertBefore(wrapper, childUl);
+    }
+
+    // Добавить <i></i>
+    if (!isStatic) {
+      const icon = document.createElement("i");
+      li.insertBefore(icon, li.firstChild);
     }
   });
 }
