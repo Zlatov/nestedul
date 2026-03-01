@@ -21,15 +21,16 @@
     padding: 0;
     padding-left: 3.2em;
     margin-left: -1.6em;
-    // Граница не должна влиять на ширину узла, поэтому box-shadow. При box-sizing всёравно появляются артефакты.
-    box-shadow: inset 1px 0px DarkGray;
+    // Если граница не должна влиять на ширину узла - box-shadow.
+    // box-shadow: inset 1px 0px DarkGray;
+    border-left: solid 1px DarkGray;
 
     // Горизонтальня линия узла.
     &::after {
       content: "";
       display: block;
       border-bottom: solid 1px DarkGray;
-      border-left: solid 1px DarkGray;
+      // border-left: solid 1px DarkGray;
       position: absolute;
       width: 3.0em;
       height: 0.7em;
@@ -39,7 +40,11 @@
 
     // Отмена вертикальной линии узла у последнего узла своего уровня.
     &:last-child {
-      box-shadow: none;
+      // box-shadow: none;
+      border-left: none;
+      &::after {
+        border-left: solid 1px DarkGray;
+      }
     }
 
     // Добавляется вертикальная линия контента (от узла до потомков).
@@ -112,7 +117,8 @@
         }
         // 3. Горизонтальные линии дочерних узлов;
         & li {
-          box-shadow: none;
+          // box-shadow: none;
+          border-left: none;
         }
         // 4. Соединительные линии дочерних узлов с поддочерними.
         & li>div::before {
