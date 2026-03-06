@@ -13,6 +13,7 @@
 ## Часто используемые команды при разработке
 
 ```bash
+nvm use
 yarn
 yarn build
 # Ctrl + Alt + C (в файле demo/index.html)

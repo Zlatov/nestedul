@@ -122,3 +122,9 @@ export function destroy() {
 }
 
 export default { version, activate, destroy };
+
+(function(global){
+  if (global.NestedUl && global.NestedUl.default) {
+    global.NestedUl = global.NestedUl.default
+  }
+})(window)
