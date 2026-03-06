@@ -1,0 +1,115 @@
+.nestedul {
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0;
+  padding-left: 2.1em;
+}
+.nestedul ul {
+  margin: 0;
+  padding: 0;
+  margin-left: -1.6em;
+  padding-left: 1.6em;
+}
+.nestedul li {
+  position: relative;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  padding-left: 3.2em;
+  margin-left: -1.6em;
+  border-left: solid 1px DarkGray;
+}
+.nestedul li::after {
+  content: "";
+  display: block;
+  border-bottom: solid 1px DarkGray;
+  position: absolute;
+  width: 3em;
+  height: 0.7em;
+  left: 0em;
+  top: 0em;
+}
+.nestedul li:last-child {
+  border-left: none;
+}
+.nestedul li:last-child::after {
+  border-left: solid 1px DarkGray;
+}
+.nestedul li:has(> ul) > div {
+  position: relative;
+}
+.nestedul li:has(> ul) > div::before {
+  content: "";
+  display: block;
+  border-left: solid 1px DarkGray;
+  position: absolute;
+  width: 0px;
+  height: 100%;
+  left: -1.6em;
+  top: 0.7em;
+}
+.nestedul:not(.nestedul-static) li > i:first-of-type {
+  display: none;
+}
+.nestedul:not(.nestedul-static) li:has(> ul) > i:first-of-type {
+  display: block;
+  position: absolute;
+  width: 0.7em;
+  height: 0.7em;
+  left: 1.6em;
+  top: 0.7em;
+  margin-left: -0.35em;
+  margin-top: -0.35em;
+  background-image: url("nestedul_assets/node.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  z-index: 2;
+  border: solid 1px DarkGray;
+}
+.nestedul:not(.nestedul-static) li:has(> ul) > ul {
+  transition: height 250ms ease;
+  overflow: hidden;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close > i:first-of-type {
+  background-position: center top;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close > ul {
+  height: 0px;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close > div::before {
+  display: none;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close li::after {
+  display: none;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close li {
+  border-left: none;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close li > div::before {
+  display: none;
+}
+.nestedul:not(.nestedul-static) li:has(> ul).nestedul-close li > i:first-of-type {
+  display: none;
+}
+
+.nestedul.nestedul-narrow {
+  padding-left: 0.1em;
+}
+.nestedul.nestedul-narrow ul {
+  margin: 0;
+  padding: 0;
+}
+.nestedul.nestedul-narrow li {
+  margin-left: 0.4em;
+  padding-left: 1.2em;
+}
+.nestedul.nestedul-narrow li::after {
+  width: 1em;
+}
+.nestedul.nestedul-narrow:not(.nestedul-static) li:has(> ul) > i:first-of-type {
+  left: 0em;
+}
+
+/*# sourceMappingURL=nestedul.css.map */

@@ -1,0 +1,134 @@
+@use "variables" as *;
+
+.nestedul {
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0;
+  padding-left: 2.1em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    margin-left: -1.6em;
+    padding-left: 1.6em;
+  }
+
+  // Узел li с вертикальной линией узла box-shadow.
+  li {
+    position: relative;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    padding-left: 3.2em;
+    margin-left: -1.6em;
+    // Если граница не должна влиять на ширину узла - box-shadow.
+    // box-shadow: inset 1px 0px DarkGray;
+    border-left: solid 1px DarkGray;
+
+    // Горизонтальня линия узла.
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: solid 1px DarkGray;
+      // border-left: solid 1px DarkGray;
+      position: absolute;
+      width: 3.0em;
+      height: 0.7em;
+      left: 0.0em;
+      top: 0.0em;
+    }
+
+    // Отмена вертикальной линии узла у последнего узла своего уровня.
+    &:last-child {
+      // box-shadow: none;
+      border-left: none;
+      &::after {
+        border-left: solid 1px DarkGray;
+      }
+    }
+
+    // Добавляется вертикальная линия контента (от узла до потомков).
+    &:has(>ul) {
+      &>div {
+        position: relative;
+
+        &::before {
+          content: "";
+          display: block;
+          border-left: solid 1px DarkGray;
+          position: absolute;
+          width: 0px;
+          height: 100%;
+          left: -1.6em;
+          top: 0.7em;
+        }
+      }
+    }
+  }
+
+  &:not(.nestedul-static) {
+    // Все первые теги i скрываются, если далее нет ul, см. li:has(>ul).
+    li>i:first-of-type {
+      display: none;
+    }
+
+    li:has(>ul) {
+      // Кликкер через тег i
+      &>i:first-of-type {
+        display: block;
+        position: absolute;
+        width: 0.7em;
+        height: 0.7em;
+        left: 1.6em;
+        top: 0.7em;
+        margin-left: -0.35em;
+        margin-top: -0.35em;
+        background-image: url("#{$nestedul-assets-path}/node.svg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        z-index: 2;
+        border: solid 1px DarkGray;
+      }
+
+      &>ul {
+        transition: height 250ms ease;
+        overflow: hidden;
+      }
+
+      &.nestedul-close {
+        // Меняем кликкер
+        &>i:first-of-type {
+          background-position: center top;
+        }
+        // Скрываем потомков
+        &>ul {
+          height: 0px;
+        }
+        // Скрыть:
+        // 1. Cоединение с потомками;
+        &>div::before {
+          display: none;
+        }
+        // 2. Вертикальные линии дочерних узлов;
+        & li::after {
+          display: none;
+        }
+        // 3. Горизонтальные линии дочерних узлов;
+        & li {
+          // box-shadow: none;
+          border-left: none;
+        }
+        // 4. Соединительные линии дочерних узлов с поддочерними.
+        & li>div::before {
+          display: none;
+        }
+        // 5. Кликкеры дочерних узлов.
+        & li>i:first-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+}

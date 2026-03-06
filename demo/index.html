@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo NestedUl</title>
+  <style type="text/css">
+
+    html, body { margin: 0; padding: 0; }
+    p { margin: 0.5em 0em; }
+    code { color: FireBrick; background-color: FloralWhite; padding: .1em; }
+    body { font-family: sans-serif; line-height: 1.25em; }
+
+    /*body { font-size: 0.675em; }*/
+    /*body { font-size: 0.8em; }*/
+    body { font-size: 1em; }
+    /*body { font-size: 2.0em; }*/
+
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+  </style>
+  <link rel="stylesheet" type="text/css" href="../dist/nestedul.css">
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../dist/nestedul.iife.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+      console.log('NestedUl.default.version: ', NestedUl.default.version)
+      console.log('NestedUl.version: ', NestedUl.version)
+      console.log('NestedUl: ', NestedUl)
+      NestedUl.activate()
+    })
+
+  </script>
+</head>
+<body>
+
+
+<div class="wrap">
+  <h2>
+    Обычный вложенный список <code>ul > li > ul > li</code>
+  </h2>
+  <ul>
+    <li>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
+    <li>
+      Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
+      <ul>
+        <li>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</li>
+      </ul>
+    </li>
+    <li>
+      Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3
+      <ul>
+        <li>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</li>
+        <li>
+          Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3
+          <ul>
+            <li>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</li>
+            <li>Qwe2 <i>qwe2</i> qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Foo <i>foo</i> foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo</li>
+  </ul>
+
+
+  <h2>
+    Древовидное отображение — <code>nestedul</code>
+  </h2>
+  <ul class="nestedul">
+    <li>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
+    <li>
+      Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
+      <ul>
+        <li>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</li>
+      </ul>
+    </li>
+    <li>
+      Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3
+      <ul>
+        <li>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</li>
+        <li>
+          Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3
+          <ul>
+            <li>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</li>
+            <li>Qwe2 <i>qwe2</i> qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Foo <i>foo</i> foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo</li>
+  </ul>
+
+
+  <h2>
+    Без раскрытий (статичное) <code>nestedul nestedul-static</code>
+  </h2>
+  <ul class="nestedul nestedul-static">
+    <li>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
+    <li>
+      Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
+      <ul>
+        <li>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</li>
+      </ul>
+    </li>
+    <li>
+      Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3
+      <ul>
+        <li>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</li>
+        <li>
+          Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3
+          <ul>
+            <li>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</li>
+            <li>Qwe2 <i>qwe2</i> qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Foo <i>foo</i> foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo</li>
+  </ul>
+
+
+  <h2>
+    Альтернативное отображение <code>nestedul nestedul-narrow</code>
+  </h2>
+  <ul class="nestedul nestedul-narrow">
+    <li>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
+    <li>
+      Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
+      <ul>
+        <li>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</li>
+      </ul>
+    </li>
+    <li>
+      Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3
+      <ul>
+        <li>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</li>
+        <li>
+          Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3
+          <ul>
+            <li>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</li>
+            <li>Qwe2 <i>qwe2</i> qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Foo <i>foo</i> foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo</li>
+  </ul>
+
+
+  <h2>
+    Альтернативное статичное отображение <code>nestedul nestedul-narrow nestedul-static</code>
+  </h2>
+  <ul class="nestedul nestedul-narrow nestedul-static">
+    <li>Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
+    <li>
+      Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
+      <ul>
+        <li>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</li>
+      </ul>
+    </li>
+    <li>
+      Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3
+      <ul>
+        <li>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</li>
+        <li>
+          Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3
+          <ul>
+            <li>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</li>
+            <li>Qwe2 <i>qwe2</i> qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Foo <i>foo</i> foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo</li>
+  </ul>
+
+
+  <h2>
+    Изначально скрытые узлы — <code>nestedul-close</code>
+  </h2>
+  <ul class="nestedul">
+    <li class="nestedul-close">Asd <i>asd</i> asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd</li>
+    <li>
+      Asd2 <i>asd2</i> asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2 asd2
+      <ul>
+        <li>Zxc <i>zxc</i> zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc</li>
+      </ul>
+    </li>
+    <li class="nestedul-close">
+      Asd3 <i>asd3</i> asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3 asd3
+      <ul>
+        <li>Zxc2 <i>zxc2</i> zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2 zxc2</li>
+        <li class="nestedul-close">
+          Zxc3 <i>zxc3</i> zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3 zxc3
+          <ul>
+            <li>Qwe1 <i>qwe1</i> qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1 qwe1</li>
+            <li>Qwe2 <i>qwe2</i> qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2 qwe2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Foo <i>foo</i> foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo</li>
+  </ul>
+  
+</div>
+
+
+</body>
+</html>

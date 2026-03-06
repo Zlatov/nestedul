@@ -1,0 +1,7 @@
+/*!
+ * NestedUl v2.0.0
+ * https://github.com/Zlatov/nestedul
+ * ISC License
+ */
+var l="2.0.0",s=null;function a(e){e.style.height="0px";let t=e.scrollHeight;e.style.height=`${t}px`}function d(e){let t=e.scrollHeight;e.style.height=`${t}px`,e.offsetHeight,e.style.height="0px"}function f(e){let t=e.target.closest(".nestedul li > i");if(!t)return;let o=t.parentElement,n=o.querySelector(":scope > ul");if(!n)return;e.stopPropagation(),o.classList.contains("nestedul-close")?a(n):d(n),o.classList.toggle("nestedul-close")}function u(e){let t=e.target;t.style.height!=="0px"&&(t.style.height="auto")}function h(e){let t=e.classList.contains("nestedul-narrow"),o=e.classList.contains("nestedul-static");e.querySelectorAll("li").forEach(n=>{let c=n.querySelector(":scope > ul");if(!t){let i=document.createElement("div");Array.from(n.childNodes).forEach(r=>{r!==c&&i.appendChild(r)}),n.insertBefore(i,c)}if(!o){let i=document.createElement("i");n.insertBefore(i,n.firstChild)}})}function p(e=document){s?.abort(),s=new AbortController,e.querySelectorAll("ul.nestedul").forEach(h),e.addEventListener("click",f,{signal:s.signal}),e.addEventListener("transitionend",u,{signal:s.signal})}function g(){s?.abort(),s=null}var x={version:l,activate:p,destroy:g};(function(e){e.NestedUl&&e.NestedUl.default&&(e.NestedUl=e.NestedUl.default)})(window);export{p as activate,x as default,g as destroy,l as version};
+//# sourceMappingURL=nestedul.esm.js.map
