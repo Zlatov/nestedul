@@ -5,7 +5,16 @@
   height="100%"
   width="100%"
 >
+  <!-- <path d="M0 0H11V11H0Z" fill="White"/> -->
+  <!-- <path d="M0 12H11V23H0Z" fill="White"/> -->
   <path d="M0 0H11V23H0Z" fill="White"/>
+  <!-- <path d="M0 0H11V11H0V0ZM1 1V10H10V1H1Z" fill="Gray" shape-rendering="crispEdges"/>
+  <path d="M2 5H5V2H6V5H9V6H6V9H5V6H2Z" fill="Gray" shape-rendering="crispEdges"/>
+  <path d="M0 11H11V22H0V11ZM1 12V21H10V12H1Z" fill="Gray" shape-rendering="crispEdges"/>
+  <path d="M2 16H9V17H2Z" fill="Gray" shape-rendering="crispEdges"/> -->
+
+  <!-- <path d="M0 0H11V11H0V0ZM1 1V10H10V1H1Z" fill="Gray"/> -->
   <path d="M2 5H5V2H6V5H9V6H6V9H5V6H2Z" fill="Gray"/>
+  <!-- <path d="M0 12H11V23H0V12ZM1 13V22H10V13H1Z" fill="Gray"/> -->
   <path d="M2 17H9V18H2Z" fill="Gray"/>
 </svg>
