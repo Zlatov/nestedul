@@ -1,10 +1,4 @@
-/*!
- * NestedUl 2.0.0
- * NestedUl may be freely distributed under the ISC license.
- * 2026-02-28 10:38
- */
-
-export const version = "2.0.0";
+export const version = __VERSION__;
 
 let controller = null;
 

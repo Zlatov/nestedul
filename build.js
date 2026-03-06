@@ -1,10 +1,24 @@
 import esbuild from "esbuild"
+import fs from "fs"
+
+const pkg = JSON.parse(fs.readFileSync("package.json"))
+const version = pkg.version
 
 const common = {
   entryPoints: ["src/nestedul.js"],
   bundle: true,
   sourcemap: true,
-  minify: true
+  minify: true,
+  define: {
+    "__VERSION__": `"${version}"`
+  },
+  banner: {
+  js: `/*!
+ * NestedUl v${version}
+ * https://github.com/Zlatov/nestedul
+ * ISC License
+ */`
+  }
 }
 
 // ESM
