@@ -22,8 +22,7 @@
     "./style": "./dist/nestedul.css"
   },
   "files": [
-    "dist",
-    "README.md"
+    "dist"
   ],
   "scripts": {
     "clean": "rimraf dist",
