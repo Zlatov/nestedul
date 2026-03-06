@@ -1,4 +1,3 @@
-/dist/
-!/dist/.keep
+dist/*.map
 
 /node_modules/
