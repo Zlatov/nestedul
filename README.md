@@ -3,10 +3,13 @@
 ![npm version](https://img.shields.io/npm/v/nestedul)
 ![npm downloads](https://img.shields.io/npm/dm/nestedul)
 ![license](https://img.shields.io/npm/l/nestedul)
+[![npm](https://img.shields.io/npm/v/nestedul)](https://www.npmjs.com/package/nestedul)
 
 NestedUl is a lightweight JavaScript library for rendering tree structures using standard nested HTML lists (`ul > li > ul`).
 
 It converts a regular HTML list into an interactive expandable tree with minimal setup and no dependencies.
+
+    ![NestedUl demo](docs/demo.gif)
 
 Full documentation and live examples:
 
@@ -15,37 +18,51 @@ https://nestedul.zlatov.su
 
 ## Installation
 
-### NPM
-
     npm install nestedul
+
+
+## Quick start
+
+**HTML**
+
+```html
+<ul class="nestedul">
+  <li>
+    Root
+    <ul>
+      <li>Child</li>
+      <li>Child</li>
+    </ul>
+  </li>
+</ul>
+```
+
+**CSS**
+
+```css
+@import "nestedul";
+```
+
+**JS**
+
+```js
+import NestedUl from "nestedul"
+
+document.addEventListener("DOMContentLoaded", () => {
+  NestedUl.activate()
+})
+```
 
 
 ## Usage
 
-NestedUl works with a standard HTML nested list structure.
-
-Example:
-
-    <ul class="nestedul">
-      <li>
-        Root
-        <ul>
-          <li>Child</li>
-          <li>Child</li>
-        </ul>
-      </li>
-    </ul>
-
-After the page loads, activate the library.
-
-    ![NestedUl demo](docs/demo.gif)
-
-
-### Import usage (Webpack, esbuild, Vite, Rails jsbundling, etc.)
+### Bundler usage (Webpack, esbuild, Vite, Rails jsbundling, etc.)
 
     import NestedUl from "nestedul"
 
-    NestedUl.activate()
+    document.addEventListener("DOMContentLoaded", () => {
+      NestedUl.activate()
+    })
 
 If your project uses Turbo (for example Rails):
 
@@ -56,7 +73,7 @@ If your project uses Turbo (for example Rails):
     })
 
 
-### Script tag usage
+### Browser usage
 
     <link rel="stylesheet" href="nestedul.css">
 
@@ -69,9 +86,9 @@ If your project uses Turbo (for example Rails):
     </script>
 
 
-### API
+## JS API
 
-#### activate(root)
+### activate(root?: Element/Document)
 
 Initializes all `.nestedul` lists inside the specified container.
 
@@ -84,58 +101,48 @@ Or inside a specific container:
 Default root is `document`.
 
 
-#### destroy()
+### destroy()
 
 Removes event listeners and deactivates the library.
 
     NestedUl.destroy()
 
 
-#### version
+### version
 
 Returns the current library version.
 
     console.log(NestedUl.version)
 
 
-### CSS Interface
+## CSS Interface
 
 NestedUl behavior is controlled through CSS classes.
 
 
-#### Basic tree
+### .nestedul
 
-    <ul class="nestedul">
-
-Displays the list as an interactive expandable tree.
+Basic interactive tree. Displays the list as an interactive expandable tree.
 
 
-#### Static tree
+### .nestedul.nestedul-static
 
-    <ul class="nestedul nestedul-static">
-
-Nodes cannot be expanded or collapsed.
+Disable expand/collapse.
 
 
-#### Compact mode
-
-    <ul class="nestedul nestedul-narrow">
+### .nestedul.nestedul-narrow
 
 Displays a more compact tree layout.
 
 
-#### Compact static tree
-
-    <ul class="nestedul nestedul-narrow nestedul-static">
+### .nestedul.nestedul-narrow.nestedul-static
 
 Compact layout without expand/collapse behavior.
 
 
-#### Initially closed nodes
+### li.nestedul-close
 
-To make a node collapsed on page load:
-
-    <li class="nestedul-close">
+To make a node collapsed on page load.
 
 
 ## Why NestedUl
@@ -147,23 +154,6 @@ To make a node collapsed on page load:
 *   Works with modern bundlers
 
 
-## Examples and documentation
-
-See full documentation and interactive demos:
-
-https://nestedul.zlatov.su
-
-
 ## License
 
-ISC License
-
-Copyright (c) Zlatov
-
-Permission to use, copy, modify, and distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS.
+ISC
