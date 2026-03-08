@@ -1,6 +1,7 @@
 # Author notes. Not part of project documentation.
 
 *   nestedul.zlatov.su.
+*   тестирование через CDN (unpkg / jsdelivr).
 
 
 ## Часто используемые команды при разработке
@@ -8,10 +9,14 @@
 ```bash
 nvm use
 yarn
+npm version patch
+npm version minor
+npm version major
 yarn build
 # Ctrl + Alt + C (в файле demo/index.html)
 # F5
 
+git push
 npm pack --dry-run
 npm publish
 ```
@@ -26,6 +31,9 @@ node -v
 
 yarn add -D sass esbuild
 yarn add -D jquery
+yarn add -D vite
+mkdir playground
+touch playground/index.html
 yarn build
 
 # Публикация частного репозитория
