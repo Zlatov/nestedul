@@ -9,6 +9,9 @@
 ```bash
 nvm use
 yarn
+npm version patch
+npm version minor
+npm version major
 yarn build
 # Ctrl + Alt + C (в файле demo/index.html)
 # F5
