@@ -18,6 +18,7 @@ yarn build
 
 git push
 npm pack --dry-run
+# npm login
 npm publish
 ```
 
