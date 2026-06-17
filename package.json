@@ -1,6 +1,6 @@
 {
   "name": "nestedul",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "module",
   "description": "Make multi-level nested UL lists as trees and add child element disclosure.",
   "keywords": [
@@ -23,7 +23,8 @@
     "./style.css": "./dist/nestedul.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "_index.scss"
   ],
   "scripts": {
     "clean": "rimraf dist",
